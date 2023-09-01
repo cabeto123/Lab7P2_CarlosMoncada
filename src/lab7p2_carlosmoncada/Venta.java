@@ -52,6 +52,11 @@ public class Venta {
     public void setCarroquesevendio(Vehiculo carroquesevendio) {
         this.carroquesevendio = carroquesevendio;
     }
+
+    @Override
+    public String toString() {
+        return  carroquesevendio.toString();
+    }
     
    
 }

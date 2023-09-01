@@ -40,5 +40,10 @@ public class Vendedor {
     public void setDinerogenerado(double dinerogenerado) {
         this.dinerogenerado = dinerogenerado;
     }
+
+    @Override
+    public String toString() {
+        return  nombre ;
+    }
     
 }

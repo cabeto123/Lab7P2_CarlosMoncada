@@ -61,6 +61,11 @@ public class Cliente {
     public void setSueldodisponible(double sueldodisponible) {
         this.sueldodisponible = sueldodisponible;
     }
+
+    @Override
+    public String toString() {
+        return nombre ;
+    }
     
     
 }

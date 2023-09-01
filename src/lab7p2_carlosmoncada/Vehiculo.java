@@ -11,13 +11,13 @@ import java.awt.Color;
  * @author calol
  */
 public class Vehiculo {
-        //Marca, Color, Modelo, Año y Precio de Venta
+       
    String marca;
    Color color;
    String modelo;
    int año;
    double precio_venta;
-   String vehiculo;
+   String id;
    
 
     public Vehiculo(String marca, Color color, String modelo, int año, double precio_venta) {
@@ -66,6 +66,14 @@ public class Vehiculo {
 
     public void setPrecio_venta(double precio_venta) {
         this.precio_venta = precio_venta;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
    
   
