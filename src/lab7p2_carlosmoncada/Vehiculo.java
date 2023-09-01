@@ -13,14 +13,14 @@ import java.awt.Color;
 public class Vehiculo {
        
    String marca;
-   Color color;
+   String color;
    String modelo;
    int año;
    double precio_venta;
    String id;
    
 
-    public Vehiculo(String marca, Color color, String modelo, int año, double precio_venta) {
+    public Vehiculo(String marca, String color, String modelo, int año, double precio_venta) {
         this.marca = marca;
         this.color = color;
         this.modelo = modelo;
@@ -36,13 +36,7 @@ public class Vehiculo {
         this.marca = marca;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    
 
     public String getModelo() {
         return modelo;
@@ -74,6 +68,11 @@ public class Vehiculo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return  marca ;
     }
    
   
