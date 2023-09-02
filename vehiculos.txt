@@ -19,3 +19,17 @@
 	2017,
 	3748.0
 ]
+[
+	Nussan,
+	negrosinderecho,
+	supra,
+	2023,
+	2398.0
+]
+[
+	Bugatti,
+	verde,
+	chiron,
+	2023,
+	2323.0
+]

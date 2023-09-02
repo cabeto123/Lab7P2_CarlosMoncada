@@ -676,22 +676,43 @@ public class Pantalla extends javax.swing.JFrame {
        int select=chooser.showOpenDialog(this);
         if (select==JFileChooser.APPROVE_OPTION) {
             File archivo2= chooser.getSelectedFile();
-            String codigo="";
+            String codigox="";
             try {
                 Scanner leedor= new Scanner(archivo2);
                 while (leedor.hasNext()) {                    
-                    codigo+=leedor.next();
+                    codigox+=leedor.next();
                 }
                 DefaultTreeModel modeloarbol= (DefaultTreeModel)arbolitosexy.getModel();
                 DefaultMutableTreeNode raiz= (DefaultMutableTreeNode)modeloarbol.getRoot();
-                String[]  splitter= codigo.split("]");
-            
-                
+                String[]  splitter= codigox.split("]");
+                System.out.println(splitter.length);
+                for (int i = 0; i < splitter.length; i++) {
+                    String[]  splitter2= splitter[i] .split(",");
+                    DefaultMutableTreeNode idventa= new DefaultMutableTreeNode(splitter2[0]);
+                    DefaultMutableTreeNode nombrevendedor= new DefaultMutableTreeNode(splitter2[1]);
+                    DefaultMutableTreeNode nombrecomprador= new DefaultMutableTreeNode(splitter2[2]);
+                    DefaultMutableTreeNode idcarro= new DefaultMutableTreeNode(splitter2[3]);
+                    idventa.add(nombrecomprador);
+                    idventa.add(nombrevendedor);
+                    idventa.add(idcarro);
+                    raiz.add(idventa);
+                    
+                }
+                modeloarbol.reload();
+                leedor.close();
             } catch (Exception e) {
             }
         }
     }//GEN-LAST:event_jToggleButton6MouseClicked
-
+    public String quitarsigno(String id){
+        String arreglo="";
+        for (int i = 0; i < 10; i++) {
+            if (id.charAt(i)!='[') {
+                arreglo+=id.charAt(i);
+            }
+        }
+    return arreglo;
+    }
     /**
      * @param args the command line arguments
      */
