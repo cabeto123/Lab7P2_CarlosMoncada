@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -285,8 +286,13 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel14.setText("Vehiculo");
 
         jToggleButton4.setText("Guardar archivo");
+        jToggleButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton4MouseClicked(evt);
+            }
+        });
 
-        jToggleButton5.setText("Crear archivo");
+        jToggleButton5.setText("Crear venta");
         jToggleButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jToggleButton5MouseClicked(evt);
@@ -324,7 +330,7 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jToggleButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jToggleButton4)
                 .addGap(63, 63, 63))
         );
@@ -405,13 +411,13 @@ public class Pantalla extends javax.swing.JFrame {
             String parasalida = "";
             while (leedor.hasNext()) {
                 parasalida += leedor.next();
-                
+
             }
             String aux = "";
-            ArrayList<Cliente> clientes = new ArrayList();
-            
+            clientes = new ArrayList();
+
             String[] splitter = parasalida.split("]");
-            
+
             for (int i = 0; i < splitter.length; i++) {
                 String[] splitter2 = splitter[i].split(",");
                 String marcax = splitter2[0];
@@ -419,23 +425,22 @@ public class Pantalla extends javax.swing.JFrame {
                     if (marcax.charAt(j) != '[') {
                         aux += marcax.charAt(j);
                     }
-                    
+
                 }
-                
-                
-              clientes.add(new Cliente(aux, Integer.parseInt(splitter2[1]), splitter2[2],Double.parseDouble(splitter2[3])));
-                aux="";
+
+                clientes.add(new Cliente(aux, Integer.parseInt(splitter2[1]), splitter2[2], Double.parseDouble(splitter2[3])));
+                aux = "";
             }
-            DefaultComboBoxModel modeloclientes= (DefaultComboBoxModel)cb_comprador.getModel();
+            DefaultComboBoxModel modeloclientes = (DefaultComboBoxModel) cb_comprador.getModel();
             modeloclientes.removeAllElements();
             for (int i = 0; i < clientes.size(); i++) {
                 modeloclientes.addElement(clientes.get(i));
             }
             cb_comprador.setModel(modeloclientes);
-           
+
         } catch (Exception e) {
         }
-        
+
 
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
@@ -461,18 +466,18 @@ public class Pantalla extends javax.swing.JFrame {
             salida += precioventa + "\n]\n";
             bw.write(salida);
             bw.flush();
-            
+
             Scanner leedor = new Scanner(archivo);
             String parasalida = "";
             while (leedor.hasNext()) {
                 parasalida += leedor.next();
-                
+
             }
             String aux = "";
-            ArrayList<Vehiculo> vehiculos = new ArrayList();
-            
+            vehiculos = new ArrayList();
+
             String[] splitter = parasalida.split("]");
-            
+
             for (int i = 0; i < splitter.length; i++) {
                 String[] splitter2 = splitter[i].split(",");
                 String marcax = splitter2[0];
@@ -480,12 +485,11 @@ public class Pantalla extends javax.swing.JFrame {
                     if (marcax.charAt(j) != '[') {
                         aux += marcax.charAt(j);
                     }
-                    
+
                 }
-                
-                
+
                 vehiculos.add(new Vehiculo(aux, splitter2[1], splitter2[2], Integer.parseInt(splitter2[3]), Double.parseDouble(splitter2[4])));
-                aux="";
+                aux = "";
             }
             vehiculos.get(vehiculos.size() - 1).setId(modelo + marca);
             DefaultComboBoxModel modelovehiculo = (DefaultComboBoxModel) cb_vehiculo.getModel();
@@ -494,20 +498,21 @@ public class Pantalla extends javax.swing.JFrame {
                 modelovehiculo.addElement(vehiculos.get(i));
             }
             cb_vehiculo.setModel(modelovehiculo);
-            
+
             fw.close();
             bw.close();
-            
+
         } catch (Exception e) {
         }
         txt_marca.setText("");
         txt_año.setText("");
         txt_precioventa.setText("");
         txt_modelo.setText("");
+        txt_color.setText("");
     }//GEN-LAST:event_jToggleButton2MouseClicked
 
     private void jToggleButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton3MouseClicked
-        
+
         File archivo = null;
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -519,22 +524,22 @@ public class Pantalla extends javax.swing.JFrame {
             salida += "[\n";
             String nombrevendedor = txt_nombrevendedor.getText();
             salida += nombrevendedor + "\t\n]";
-            
+
             bw.write(salida);
-            
+
             bw.flush();
-             
+
             Scanner leedor = new Scanner(archivo);
             String parasalida = "";
             while (leedor.hasNext()) {
                 parasalida += leedor.next();
-                
+
             }
             String aux = "";
-            ArrayList<Vendedor> vendedores = new ArrayList();
-            
+            vendedores = new ArrayList();
+
             String[] splitter = parasalida.split("]");
-            
+
             for (int i = 0; i < splitter.length; i++) {
                 String[] splitter2 = splitter[i].split(",");
                 String marcax = splitter2[0];
@@ -542,14 +547,13 @@ public class Pantalla extends javax.swing.JFrame {
                     if (marcax.charAt(j) != '[') {
                         aux += marcax.charAt(j);
                     }
-                    
+
                 }
-                
-                
-              vendedores.add(new Vendedor(aux));
-                aux="";
+
+                vendedores.add(new Vendedor(aux));
+                aux = "";
             }
-            DefaultComboBoxModel mo=(DefaultComboBoxModel)cb_vendedor.getModel();
+            DefaultComboBoxModel mo = (DefaultComboBoxModel) cb_vendedor.getModel();
             mo.removeAllElements();
             for (int i = 0; i < vendedores.size(); i++) {
                 mo.addElement(vendedores.get(i));
@@ -558,20 +562,64 @@ public class Pantalla extends javax.swing.JFrame {
             txt_nombrevendedor.setText("");
             bw.close();
             fw.close();
-            
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jToggleButton3MouseClicked
 
     private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
-        
+
 
     }//GEN-LAST:event_menuMouseClicked
 
     private void jToggleButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton5MouseClicked
+        int venta = ventas.size()+1;
+        String codigo = "[\n";
+        Vendedor vdorhizolaoperacion=(Vendedor)cb_vendedor.getSelectedItem();
+        Cliente clientecompro=(Cliente)cb_comprador.getSelectedItem();
+        double costillo=Double.parseDouble(costotransaccion.getText());
+        Vehiculo carroquesevendio=(Vehiculo)cb_vehiculo.getSelectedItem();
+        codigo+="\t"+venta;
+        codigo+="\n\t"+vdorhizolaoperacion.toString();
+        codigo+="\n\t"+clientecompro.toString();
+        codigo+="\n\t"+carroquesevendio.toString()+"\n]";
+        
+        ventas.add(new Venta(vdorhizolaoperacion, clientecompro, costillo, carroquesevendio));
+        costotransaccion.setText("");
         
 
     }//GEN-LAST:event_jToggleButton5MouseClicked
+
+    private void jToggleButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton4MouseClicked
+        cb_comprador.removeAll();
+        cb_vehiculo.removeAll();
+        cb_vendedor.removeAll();
+        String nombre=JOptionPane.showInputDialog("Digite el nombre del archivo");
+        try {
+        File archivo= new File("./"+nombre+".txt");
+        FileWriter fw= new FileWriter(archivo);
+        BufferedWriter bw= new BufferedWriter(fw);
+            for (int i = 0; i < ventas.size(); i++) {
+               int venta = i+1;
+        String codigo = "[\n";
+        Vendedor vdorhizolaoperacion=ventas.get(i).getVdorhizolaoperacion();
+        Cliente clientecompro=(Cliente)ventas.get(i).clientecompro;
+        double costillo=ventas.get(i).costotransaccion;
+        Vehiculo carroquesevendio=ventas.get(i).carroquesevendio;
+        codigo+="\t"+venta;
+        codigo+="\n\t"+vdorhizolaoperacion.toString();
+        codigo+="\n\t"+clientecompro.toString();
+        codigo+="\n\t"+carroquesevendio.toString()+"\n]\n";
+        bw.write(codigo);
+        codigo="";
+         
+            }
+        
+        } catch (Exception e) {
+        }
+        
+        
+    }//GEN-LAST:event_jToggleButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -607,7 +655,10 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
     }
-
+    ArrayList<Venta> ventas = new ArrayList();
+    ArrayList<Vendedor> vendedores = new ArrayList();
+    ArrayList<Vehiculo> vehiculos = new ArrayList();
+    ArrayList<Cliente> clientes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_comprador;
     private javax.swing.JComboBox<String> cb_vehiculo;

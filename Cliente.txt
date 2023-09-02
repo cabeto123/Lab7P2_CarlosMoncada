@@ -1,19 +1,18 @@
-
 [
 	Carlos,
-	23,
+	12,
 	Sistemas,
-	93428.0
+	33434.0
+]
+[
+	Alejandro,
+	24,
+	Diseño Modas,
+	293823.0
 ]
 [
 	Carlos,
-	19,
+	24,
 	Sistemas,
-	45000.0
-]
-[
-	Carlos,
-	17,
-	Sistemas,
-	45000.0
+	2389.0
 ]

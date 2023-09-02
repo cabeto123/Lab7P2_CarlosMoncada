@@ -1,28 +1,14 @@
 [
-	Ford,
-	weiu,
-	sdij,
-	238,
-	238.0
-]
-[
-	Lambo,
-	weiu,
-	ksj,
-	192,
-	238.0
+	Kia,
+	Blanco,
+	Picanto,
+	22,
+	2398.0
 ]
 [
 	Ford,
 	Azul,
 	Focus,
-	203,
-	4599.0
-]
-[
-	Ford,
-	Azul,
-	Focus,
-	2923,
-	293.0
+	2023,
+	2902.0
 ]

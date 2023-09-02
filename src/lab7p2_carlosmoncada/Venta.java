@@ -55,7 +55,7 @@ public class Venta {
 
     @Override
     public String toString() {
-        return  carroquesevendio.toString();
+        return  carroquesevendio.toString()   ;
     }
     
    
