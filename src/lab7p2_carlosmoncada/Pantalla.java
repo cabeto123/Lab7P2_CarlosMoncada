@@ -823,6 +823,7 @@ public class Pantalla extends javax.swing.JFrame {
                    modeloarbol.reload();
                 leedor.close();
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }//GEN-LAST:event_jToggleButton6MouseClicked
