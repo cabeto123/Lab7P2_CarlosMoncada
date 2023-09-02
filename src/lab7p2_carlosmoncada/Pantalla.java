@@ -401,8 +401,38 @@ public class Pantalla extends javax.swing.JFrame {
             txt_sueldodisponible.setText("");
             txt_profesion.setText("");
             txt_nombre.setText("");
+            Scanner leedor = new Scanner(archivo);
+            String parasalida = "";
+            while (leedor.hasNext()) {
+                parasalida += leedor.next();
+                
+            }
+            String aux = "";
+            ArrayList<Cliente> clientes = new ArrayList();
             
+            String[] splitter = parasalida.split("]");
             
+            for (int i = 0; i < splitter.length; i++) {
+                String[] splitter2 = splitter[i].split(",");
+                String marcax = splitter2[0];
+                for (int j = 0; j < marcax.length(); j++) {
+                    if (marcax.charAt(j) != '[') {
+                        aux += marcax.charAt(j);
+                    }
+                    
+                }
+                
+                
+              clientes.add(new Cliente(aux, Integer.parseInt(splitter2[1]), splitter2[2],Double.parseDouble(splitter2[3])));
+                aux="";
+            }
+            DefaultComboBoxModel modeloclientes= (DefaultComboBoxModel)cb_comprador.getModel();
+            modeloclientes.removeAllElements();
+            for (int i = 0; i < clientes.size(); i++) {
+                modeloclientes.addElement(clientes.get(i));
+            }
+            cb_comprador.setModel(modeloclientes);
+           
         } catch (Exception e) {
         }
         
@@ -493,6 +523,39 @@ public class Pantalla extends javax.swing.JFrame {
             bw.write(salida);
             
             bw.flush();
+             
+            Scanner leedor = new Scanner(archivo);
+            String parasalida = "";
+            while (leedor.hasNext()) {
+                parasalida += leedor.next();
+                
+            }
+            String aux = "";
+            ArrayList<Vendedor> vendedores = new ArrayList();
+            
+            String[] splitter = parasalida.split("]");
+            
+            for (int i = 0; i < splitter.length; i++) {
+                String[] splitter2 = splitter[i].split(",");
+                String marcax = splitter2[0];
+                for (int j = 0; j < marcax.length(); j++) {
+                    if (marcax.charAt(j) != '[') {
+                        aux += marcax.charAt(j);
+                    }
+                    
+                }
+                
+                
+              vendedores.add(new Vendedor(aux));
+                aux="";
+            }
+            DefaultComboBoxModel mo=(DefaultComboBoxModel)cb_vendedor.getModel();
+            mo.removeAllElements();
+            for (int i = 0; i < vendedores.size(); i++) {
+                mo.addElement(vendedores.get(i));
+            }
+            cb_vendedor.setModel(mo);
+            txt_nombrevendedor.setText("");
             bw.close();
             fw.close();
             
