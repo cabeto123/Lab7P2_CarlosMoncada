@@ -828,7 +828,7 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton6MouseClicked
 
     private void jToggleButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton7MouseClicked
-        try {
+try {
             File clientes = new File("./Cliente.txt");
             Scanner leedorcliente = new Scanner(clientes);
             String clientesx = "";
@@ -843,7 +843,7 @@ public class Pantalla extends javax.swing.JFrame {
             DefaultMutableTreeNode clientespapa = new DefaultMutableTreeNode("Clientes");
             for (int i = 0; i < splitter.length; i++) {
                 String[] splitter2 = splitter[i].split(",");
-                DefaultMutableTreeNode nombre = new DefaultMutableTreeNode(quitarsigno(splitter2[0]));
+                DefaultMutableTreeNode nombre = new DefaultMutableTreeNode(splitter2[0]);
                 DefaultMutableTreeNode edad = new DefaultMutableTreeNode(splitter2[1]);
                 DefaultMutableTreeNode carrera = new DefaultMutableTreeNode(splitter2[2]);
                 DefaultMutableTreeNode sueldo = new DefaultMutableTreeNode(splitter2[3]);
@@ -879,12 +879,12 @@ public class Pantalla extends javax.swing.JFrame {
             File vehiculos = new File("./vehiculos.txt");
             Scanner leedorvehiculos = new Scanner(vehiculos);
             String vehiculox = "";
-            while (leedorcliente.hasNext()) {
+            while (leedorvehiculos.hasNext()) {
                 vehiculox += leedorvehiculos.next();
             }
 
             String[] splittervehiculos = vendedorex.split("]");
-            DefaultMutableTreeNode vehiculoss = new DefaultMutableTreeNode("vendedores");
+            DefaultMutableTreeNode vehiculoss = new DefaultMutableTreeNode("vehiculos");
             for (int i = 0; i < splittervehiculos.length; i++) {
                 String[] splitervehiculosaux = splittervehiculos[i].split(",");
                 DefaultMutableTreeNode nombre = new DefaultMutableTreeNode(quitarsigno(splitervehiculosaux[0]));
@@ -919,10 +919,10 @@ public class Pantalla extends javax.swing.JFrame {
             
             leedorventas.close();
             modeloarbol.reload();
-
+            
         } catch (Exception e) {
+            e.printStackTrace();
         }
-
 
     }//GEN-LAST:event_jToggleButton7MouseClicked
 
@@ -962,7 +962,7 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton9MouseClicked
     public String quitarsigno(String id) {
         String arreglo = "";
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < id.length(); i++) {
             if (id.charAt(i) != '[') {
                 arreglo += id.charAt(i);
             }
