@@ -82,6 +82,12 @@ public class Pantalla extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         arbolitosexy = new javax.swing.JTree();
         jToggleButton6 = new javax.swing.JToggleButton();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        arbolclase = new javax.swing.JTree();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        limp = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,7 +141,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jToggleButton1)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +220,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(jToggleButton2)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +275,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jToggleButton3)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +344,7 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jToggleButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(jToggleButton4)
                 .addGap(63, 63, 63))
         );
@@ -405,6 +411,52 @@ public class Pantalla extends javax.swing.JFrame {
         );
 
         menu.addTab("Arbol ventas", jPanel5);
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Arbol clase");
+        arbolclase.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(arbolclase);
+
+        jToggleButton7.setText("Cargar al arbol");
+        jToggleButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton7MouseClicked(evt);
+            }
+        });
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        limp.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(limp);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(395, 395, 395)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jToggleButton7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menu.addTab("Arbol Clases", jPanel6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -617,20 +669,32 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_menuMouseClicked
 
     private void jToggleButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton5MouseClicked
-        int venta = ventas.size()+1;
+        int venta = ventas.size() + 1;
         String codigo = "[\n";
-        Vendedor vdorhizolaoperacion=(Vendedor)cb_vendedor.getSelectedItem();
-        Cliente clientecompro=(Cliente)cb_comprador.getSelectedItem();
-        double costillo=Double.parseDouble(costotransaccion.getText());
-        Vehiculo carroquesevendio=(Vehiculo)cb_vehiculo.getSelectedItem();
-        codigo+="\t"+venta;
-        codigo+="\n\t"+vdorhizolaoperacion.toString();
-        codigo+="\n\t"+clientecompro.toString();
-        codigo+="\n\t"+carroquesevendio.toString()+"\n]";
-        
-        ventas.add(new Venta(vdorhizolaoperacion, clientecompro, costillo, carroquesevendio));
-        costotransaccion.setText("");
-        
+
+        try {
+            File archivo = new File("./ventadia");
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            Vendedor vdorhizolaoperacion = (Vendedor) cb_vendedor.getSelectedItem();
+            Cliente clientecompro = (Cliente) cb_comprador.getSelectedItem();
+            double costillo = Double.parseDouble(costotransaccion.getText());
+            Vehiculo carroquesevendio = (Vehiculo) cb_vehiculo.getSelectedItem();
+            codigo += "\t" + venta;
+            codigo += "\n\t" + vdorhizolaoperacion.toString();
+            codigo += "\n\t" + clientecompro.toString();
+            codigo += "\n\t" + carroquesevendio.toString() + "\n]";
+            ventas.add(new Venta(vdorhizolaoperacion, clientecompro, costillo, carroquesevendio));
+            costotransaccion.setText("");
+            bw.write(codigo);
+            bw.flush();
+            bw.close();
+            fw.close();
+
+        } catch (Exception e) {
+        }
+
 
     }//GEN-LAST:event_jToggleButton5MouseClicked
 
@@ -638,65 +702,67 @@ public class Pantalla extends javax.swing.JFrame {
         cb_comprador.removeAll();
         cb_vehiculo.removeAll();
         cb_vendedor.removeAll();
-        String nombre=JOptionPane.showInputDialog("Digite el nombre del archivo");
+        String nombre = JOptionPane.showInputDialog("Digite el nombre del archivo");
         try {
-        File archivo= new File("./"+nombre+".txt");
-        FileWriter fw= new FileWriter(archivo);
-        BufferedWriter bw= new BufferedWriter(fw);
+            File archivo = new File("./" + nombre + ".txt");
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < ventas.size(); i++) {
-               int venta = i+1;
-        String codigo = "[\n";
-        Vendedor vdorhizolaoperacion=ventas.get(i).getVdorhizolaoperacion();
-        Cliente clientecompro=(Cliente)ventas.get(i).clientecompro;
-        double costillo=ventas.get(i).costotransaccion;
-        Vehiculo carroquesevendio=ventas.get(i).carroquesevendio;
-        codigo+="\t"+venta+",";
-        codigo+="\n\t"+vdorhizolaoperacion.toString()+",";
-        codigo+="\n\t"+clientecompro.toString()+",";
-        codigo+="\n\t"+carroquesevendio.getId()+"\n]\n";
-        bw.write(codigo);
-        codigo="";
-        
-         
+                int venta = i + 1;
+                String codigo = "[\n";
+                Vendedor vdorhizolaoperacion = ventas.get(i).getVdorhizolaoperacion();
+                Cliente clientecompro = (Cliente) ventas.get(i).clientecompro;
+                double costillo = ventas.get(i).costotransaccion;
+                Vehiculo carroquesevendio = ventas.get(i).carroquesevendio;
+                codigo += "\t" + venta + ",";
+                codigo += "\n\t" + vdorhizolaoperacion.toString() + ",";
+                codigo += "\n\t" + clientecompro.toString() + ",";
+                codigo += "\n\t" + carroquesevendio.getId() + "\n]\n";
+                bw.write(codigo);
+                codigo = "";
+
             }
             bw.flush();
             bw.close();
             fw.close();
-        
+
         } catch (Exception e) {
         }
-        
-        
+
+
     }//GEN-LAST:event_jToggleButton4MouseClicked
 
     private void jToggleButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton6MouseClicked
-        JFileChooser chooser= new JFileChooser();
-        FileNameExtensionFilter filtro= new FileNameExtensionFilter("Archivos de texto", "txt");
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de texto", "txt");
         chooser.setFileFilter(filtro);
-       int select=chooser.showOpenDialog(this);
-        if (select==JFileChooser.APPROVE_OPTION) {
-            File archivo2= chooser.getSelectedFile();
-            String codigox="";
+        int select = chooser.showOpenDialog(this);
+        if (select == JFileChooser.APPROVE_OPTION) {
+            File archivo2 = chooser.getSelectedFile();
+            String codigox = "";
             try {
-                Scanner leedor= new Scanner(archivo2);
-                while (leedor.hasNext()) {                    
-                    codigox+=leedor.next();
+                Scanner leedor = new Scanner(archivo2);
+                while (leedor.hasNext()) {
+                    codigox += leedor.next();
                 }
-                DefaultTreeModel modeloarbol= (DefaultTreeModel)arbolitosexy.getModel();
-                DefaultMutableTreeNode raiz= (DefaultMutableTreeNode)modeloarbol.getRoot();
-                String[]  splitter= codigox.split("]");
-                System.out.println(splitter.length);
+
+                arbolitosexy.setModel(limp.getModel());
+                DefaultTreeModel modeloarbol = (DefaultTreeModel) arbolitosexy.getModel();
+
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloarbol.getRoot();
+                String[] splitter = codigox.split("]");
+
                 for (int i = 0; i < splitter.length; i++) {
-                    String[]  splitter2= splitter[i] .split(",");
-                    DefaultMutableTreeNode idventa= new DefaultMutableTreeNode(splitter2[0]);
-                    DefaultMutableTreeNode nombrevendedor= new DefaultMutableTreeNode(splitter2[1]);
-                    DefaultMutableTreeNode nombrecomprador= new DefaultMutableTreeNode(splitter2[2]);
-                    DefaultMutableTreeNode idcarro= new DefaultMutableTreeNode(splitter2[3]);
+                    String[] splitter2 = splitter[i].split(",");
+                    DefaultMutableTreeNode idventa = new DefaultMutableTreeNode(quitarsigno(splitter2[0]));
+                    DefaultMutableTreeNode nombrevendedor = new DefaultMutableTreeNode(splitter2[1]);
+                    DefaultMutableTreeNode nombrecomprador = new DefaultMutableTreeNode(splitter2[2]);
+                    DefaultMutableTreeNode idcarro = new DefaultMutableTreeNode(splitter2[3]);
                     idventa.add(nombrecomprador);
                     idventa.add(nombrevendedor);
                     idventa.add(idcarro);
                     raiz.add(idventa);
-                    
+
                 }
                 modeloarbol.reload();
                 leedor.close();
@@ -704,15 +770,92 @@ public class Pantalla extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jToggleButton6MouseClicked
-    public String quitarsigno(String id){
-        String arreglo="";
+
+    private void jToggleButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton7MouseClicked
+        try {
+            File clientes = new File("./Cliente.txt");
+            Scanner leedorcliente = new Scanner(clientes);
+            String clientesx = "";
+            while (leedorcliente.hasNext()) {
+                clientesx += leedorcliente.next();
+            }
+            arbolclase.setModel(limp.getModel());
+            DefaultTreeModel modeloarbol = (DefaultTreeModel) arbolclase.getModel();
+
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloarbol.getRoot();
+            String[] splitter = clientesx.split("]");
+            DefaultMutableTreeNode clientespapa = new DefaultMutableTreeNode("Clientes");
+            for (int i = 0; i < splitter.length; i++) {
+                String[] splitter2 = splitter[i].split(",");
+                DefaultMutableTreeNode nombre = new DefaultMutableTreeNode(quitarsigno(splitter2[0]));
+                DefaultMutableTreeNode edad = new DefaultMutableTreeNode(splitter2[1]);
+                DefaultMutableTreeNode carrera = new DefaultMutableTreeNode(splitter2[2]);
+                DefaultMutableTreeNode sueldo = new DefaultMutableTreeNode(splitter2[3]);
+                clientespapa.add(nombre);
+                clientespapa.add(edad);
+                clientespapa.add(carrera);
+                clientespapa.add(sueldo);
+                raiz.add(clientespapa);
+
+            }
+
+            leedorcliente.close();
+            File vendedores = new File("./Vendedor.txt");
+            Scanner leedorvendedores = new Scanner(vendedores);
+            String vendedorex = "";
+            while (leedorvendedores.hasNext()) {
+                vendedorex += leedorvendedores.next();
+            }
+
+            String[] splittervendedor = vendedorex.split("]");
+            DefaultMutableTreeNode vendedorespa = new DefaultMutableTreeNode("vendedores");
+            for (int i = 0; i < splittervendedor.length; i++) {
+                String[] splitervendedoraux = splittervendedor[i].split(",");
+                DefaultMutableTreeNode nombre = new DefaultMutableTreeNode(quitarsigno(splitervendedoraux[0]));
+                vendedorespa.add(nombre);
+
+                raiz.add(clientespapa);
+
+            }
+
+            leedorvendedores.close();
+            File vehiculos = new File("./vehiculos.txt");
+            Scanner leedorvehiculos = new Scanner(vehiculos);
+            String vehiculox = "";
+            while (leedorcliente.hasNext()) {
+                vehiculox += leedorvehiculos.next();
+            }
+
+            String[] splittervehiculos = vendedorex.split("]");
+            DefaultMutableTreeNode vehiculoss = new DefaultMutableTreeNode("vendedores");
+            for (int i = 0; i < splittervehiculos.length; i++) {
+                String[] splitervehiculosaux = splittervehiculos[i].split(",");
+                DefaultMutableTreeNode nombre = new DefaultMutableTreeNode(quitarsigno(splitervehiculosaux[0]));
+                clientespapa.add(nombre);
+
+                raiz.add(clientespapa);
+
+            }
+            
+            leedorvehiculos.close();
+            File ventas = new File("./ventadia.txt");
+            
+
+        } catch (Exception e) {
+        }
+
+
+    }//GEN-LAST:event_jToggleButton7MouseClicked
+    public String quitarsigno(String id) {
+        String arreglo = "";
         for (int i = 0; i < 10; i++) {
-            if (id.charAt(i)!='[') {
-                arreglo+=id.charAt(i);
+            if (id.charAt(i) != '[') {
+                arreglo += id.charAt(i);
             }
         }
-    return arreglo;
+        return arreglo;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -752,6 +895,7 @@ public class Pantalla extends javax.swing.JFrame {
     ArrayList<Vehiculo> vehiculos = new ArrayList();
     ArrayList<Cliente> clientes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTree arbolclase;
     private javax.swing.JTree arbolitosexy;
     private javax.swing.JComboBox<String> cb_comprador;
     private javax.swing.JComboBox<String> cb_vehiculo;
@@ -777,13 +921,18 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JTree limp;
     private javax.swing.JTabbedPane menu;
     private javax.swing.JTextField txt_año;
     private javax.swing.JTextField txt_color;
