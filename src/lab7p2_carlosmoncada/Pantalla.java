@@ -88,6 +88,11 @@ public class Pantalla extends javax.swing.JFrame {
         jToggleButton7 = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         limp = new javax.swing.JTree();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        area_salida = new javax.swing.JTextArea();
+        jToggleButton8 = new javax.swing.JToggleButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,7 +146,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jToggleButton1)))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,6 +462,54 @@ public class Pantalla extends javax.swing.JFrame {
         );
 
         menu.addTab("Arbol Clases", jPanel6);
+
+        area_salida.setColumns(20);
+        area_salida.setRows(5);
+        jScrollPane4.setViewportView(area_salida);
+
+        jToggleButton8.setText("Escojer archivo");
+        jToggleButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton8MouseClicked(evt);
+            }
+        });
+
+        jToggleButton9.setText("Modificar");
+        jToggleButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton9MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jToggleButton9, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(35, 35, 35))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jToggleButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jToggleButton9)))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+
+        menu.addTab("Modificar", jPanel7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -839,13 +892,67 @@ public class Pantalla extends javax.swing.JFrame {
             
             leedorvehiculos.close();
             File ventas = new File("./ventadia.txt");
+            Scanner leedorventas = new Scanner(vehiculos);
+            String ventasstr = "";
+            while (leedorventas.hasNext()) {
+               ventasstr += leedorventas.next();
+            }
+
+            String[] splitterventas = ventasstr.split("]");
+            DefaultMutableTreeNode ventass = new DefaultMutableTreeNode("Ventas");
+            for (int i = 0; i < splitterventas.length; i++) {
+                String[] spliterventasaux = splitterventas[i].split(",");
+                DefaultMutableTreeNode idventa = new DefaultMutableTreeNode(quitarsigno(spliterventasaux[0]));
+                    DefaultMutableTreeNode nombrevendedor = new DefaultMutableTreeNode(spliterventasaux[1]);
+                    DefaultMutableTreeNode nombrecomprador = new DefaultMutableTreeNode(spliterventasaux[2]);
+                    DefaultMutableTreeNode idcarro = new DefaultMutableTreeNode(spliterventasaux[3]);
+                    idventa.add(nombrecomprador);
+                    idventa.add(nombrevendedor);
+                    idventa.add(idcarro);
+                    raiz.add(idventa);
+
+            }
             
+            leedorventas.close();
+            modeloarbol.reload();
 
         } catch (Exception e) {
         }
 
 
     }//GEN-LAST:event_jToggleButton7MouseClicked
+
+    private void jToggleButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton8MouseClicked
+        JFileChooser chooser = new JFileChooser();
+        archivomodificar=null;
+        int selected =chooser.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+             archivomodificar=chooser.getSelectedFile();
+             
+             try {
+             Scanner leer= new Scanner(archivomodificar);
+             while (leer.hasNext()) {                
+                area_salida.append(leer.next());
+            }   
+             leer.close();
+            } catch (Exception e) {
+            }
+             
+        }
+    }//GEN-LAST:event_jToggleButton8MouseClicked
+
+    private void jToggleButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton9MouseClicked
+        try {
+            FileWriter fw = new FileWriter(archivomodificar);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(area_salida.getText());
+            bw.flush();
+            fw.close();
+            bw.close();
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jToggleButton9MouseClicked
     public String quitarsigno(String id) {
         String arreglo = "";
         for (int i = 0; i < 10; i++) {
@@ -890,6 +997,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
     }
+    File archivomodificar =null;
     ArrayList<Venta> ventas = new ArrayList();
     ArrayList<Vendedor> vendedores = new ArrayList();
     ArrayList<Vehiculo> vehiculos = new ArrayList();
@@ -897,6 +1005,7 @@ public class Pantalla extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree arbolclase;
     private javax.swing.JTree arbolitosexy;
+    private javax.swing.JTextArea area_salida;
     private javax.swing.JComboBox<String> cb_comprador;
     private javax.swing.JComboBox<String> cb_vehiculo;
     private javax.swing.JComboBox<String> cb_vendedor;
@@ -922,9 +1031,11 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
@@ -932,6 +1043,8 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
     private javax.swing.JTree limp;
     private javax.swing.JTabbedPane menu;
     private javax.swing.JTextField txt_año;
