@@ -1,13 +1,3 @@
 [
-Juan	
-][
-Carlos	
-][
-Walter	
-][
-Jorge	
-][
-Walter	
-][
-CR7	
+Alessandro	
 ]

@@ -146,7 +146,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jToggleButton1)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +225,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(jToggleButton2)))
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +280,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jToggleButton3)))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,7 +349,7 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jToggleButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                 .addComponent(jToggleButton4)
                 .addGap(63, 63, 63))
         );
@@ -444,7 +444,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(395, 395, 395)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -464,7 +464,7 @@ public class Pantalla extends javax.swing.JFrame {
         menu.addTab("Arbol Clases", jPanel6);
 
         area_salida.setColumns(20);
-        area_salida.setRows(5);
+        area_salida.setRows(203030);
         jScrollPane4.setViewportView(area_salida);
 
         jToggleButton8.setText("Escojer archivo");
@@ -487,8 +487,8 @@ public class Pantalla extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToggleButton8, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jToggleButton9, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -499,14 +499,14 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(jToggleButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButton9)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addComponent(jToggleButton9))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menu.addTab("Modificar", jPanel7);
@@ -640,7 +640,7 @@ public class Pantalla extends javax.swing.JFrame {
                 vehiculos.add(new Vehiculo(aux, splitter2[1], splitter2[2], Integer.parseInt(splitter2[3]), Double.parseDouble(splitter2[4])));
                 aux = "";
             }
-            vehiculos.get(vehiculos.size() - 1).setId(modelo + marca);
+            vehiculos.get(vehiculos.size() - 1).setId(modelo + vehiculos.size());
             DefaultComboBoxModel modelovehiculo = (DefaultComboBoxModel) cb_vehiculo.getModel();
             modelovehiculo.removeAllElements();
             for (int i = 0; i < vehiculos.size(); i++) {
@@ -726,7 +726,7 @@ public class Pantalla extends javax.swing.JFrame {
         String codigo = "[\n";
 
         try {
-            File archivo = new File("./ventadia");
+            File archivo = new File("./ventadia.txt");
             FileWriter fw = new FileWriter(archivo);
             BufferedWriter bw = new BufferedWriter(fw);
 
@@ -799,14 +799,15 @@ public class Pantalla extends javax.swing.JFrame {
                     codigox += leedor.next();
                 }
 
-                arbolitosexy.setModel(limp.getModel());
+                
                 DefaultTreeModel modeloarbol = (DefaultTreeModel) arbolitosexy.getModel();
 
-                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloarbol.getRoot();
+                DefaultMutableTreeNode raizz = (DefaultMutableTreeNode) modeloarbol.getRoot();
                 String[] splitter = codigox.split("]");
-
+                
                 for (int i = 0; i < splitter.length; i++) {
                     String[] splitter2 = splitter[i].split(",");
+                    System.out.println(splitter2.length);
                     DefaultMutableTreeNode idventa = new DefaultMutableTreeNode(quitarsigno(splitter2[0]));
                     DefaultMutableTreeNode nombrevendedor = new DefaultMutableTreeNode(splitter2[1]);
                     DefaultMutableTreeNode nombrecomprador = new DefaultMutableTreeNode(splitter2[2]);
@@ -814,10 +815,12 @@ public class Pantalla extends javax.swing.JFrame {
                     idventa.add(nombrecomprador);
                     idventa.add(nombrevendedor);
                     idventa.add(idcarro);
-                    raiz.add(idventa);
-
+                    raizz.add(idventa);
+                    
                 }
-                modeloarbol.reload();
+             
+                
+                   modeloarbol.reload();
                 leedor.close();
             } catch (Exception e) {
             }
@@ -832,7 +835,7 @@ public class Pantalla extends javax.swing.JFrame {
             while (leedorcliente.hasNext()) {
                 clientesx += leedorcliente.next();
             }
-            arbolclase.setModel(limp.getModel());
+            
             DefaultTreeModel modeloarbol = (DefaultTreeModel) arbolclase.getModel();
 
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloarbol.getRoot();
@@ -849,6 +852,7 @@ public class Pantalla extends javax.swing.JFrame {
                 clientespapa.add(carrera);
                 clientespapa.add(sueldo);
                 raiz.add(clientespapa);
+                
 
             }
 
@@ -925,6 +929,7 @@ public class Pantalla extends javax.swing.JFrame {
     private void jToggleButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton8MouseClicked
         JFileChooser chooser = new JFileChooser();
         archivomodificar=null;
+        modificar="";
         int selected =chooser.showOpenDialog(this);
         if (selected == JFileChooser.APPROVE_OPTION) {
              archivomodificar=chooser.getSelectedFile();
@@ -932,8 +937,9 @@ public class Pantalla extends javax.swing.JFrame {
              try {
              Scanner leer= new Scanner(archivomodificar);
              while (leer.hasNext()) {                
-                area_salida.append(leer.next());
+                modificar+=leer.next();
             }   
+             area_salida.setText(modificar);
              leer.close();
             } catch (Exception e) {
             }
@@ -945,7 +951,8 @@ public class Pantalla extends javax.swing.JFrame {
         try {
             FileWriter fw = new FileWriter(archivomodificar);
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(area_salida.getText());
+            modificar=area_salida.getText();
+            bw.write(modificar);
             bw.flush();
             fw.close();
             bw.close();
@@ -997,6 +1004,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
     }
+    String modificar="";
     File archivomodificar =null;
     ArrayList<Venta> ventas = new ArrayList();
     ArrayList<Vendedor> vendedores = new ArrayList();

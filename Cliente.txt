@@ -1,36 +1,30 @@
 [
 	Carlos,
-	12,
-	Sistemas,
-	33434.0
-]
-[
-	Alejandro,
-	24,
-	Diseño Modas,
-	293823.0
-]
-[
-	Carlos,
-	24,
-	Sistemas,
-	2389.0
-]
-[
-	Ercka,
-	17,
-	Medicina,
-	2934.0
-]
-[
-	Water,
 	17,
 	Sistemas,
-	3289.0
+	2387.0
 ]
 [
-	Gabriel,
-	3,
+	Walter,
+	22,
+	Imbecil,
+	493.0
+]
+[
+	Eliana,
+	21,
+	Industial,
+	2398.0
+]
+[
+	Walter,
+	9,
 	sistemas,
-	3948.0
+	334.0
+]
+[
+	Luis,
+	15,
+	sistemas,
+	39.0
 ]
