@@ -16,3 +16,9 @@
 	Sistemas,
 	2389.0
 ]
+[
+	Ercka,
+	17,
+	Medicina,
+	2934.0
+]

@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -74,6 +78,10 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jToggleButton4 = new javax.swing.JToggleButton();
         jToggleButton5 = new javax.swing.JToggleButton();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        arbolitosexy = new javax.swing.JTree();
+        jToggleButton6 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,7 +156,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txt_sueldodisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addGap(41, 41, 41))
         );
@@ -231,7 +239,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txt_precioventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jToggleButton2)
                 .addContainerGap())
         );
@@ -270,7 +278,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txt_nombrevendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(jToggleButton3)
                 .addGap(26, 26, 26))
         );
@@ -353,7 +361,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_vehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton4)
                     .addComponent(jToggleButton5))
@@ -361,6 +369,42 @@ public class Pantalla extends javax.swing.JFrame {
         );
 
         menu.addTab("Crear venta", jPanel4);
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Lab 7");
+        arbolitosexy.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(arbolitosexy);
+
+        jToggleButton6.setText("Seleccionar archivo");
+        jToggleButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jToggleButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        menu.addTab("Arbol ventas", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -606,20 +650,47 @@ public class Pantalla extends javax.swing.JFrame {
         Cliente clientecompro=(Cliente)ventas.get(i).clientecompro;
         double costillo=ventas.get(i).costotransaccion;
         Vehiculo carroquesevendio=ventas.get(i).carroquesevendio;
-        codigo+="\t"+venta;
-        codigo+="\n\t"+vdorhizolaoperacion.toString();
-        codigo+="\n\t"+clientecompro.toString();
-        codigo+="\n\t"+carroquesevendio.toString()+"\n]\n";
+        codigo+="\t"+venta+",";
+        codigo+="\n\t"+vdorhizolaoperacion.toString()+",";
+        codigo+="\n\t"+clientecompro.toString()+",";
+        codigo+="\n\t"+carroquesevendio.getId()+"\n]\n";
         bw.write(codigo);
         codigo="";
+        
          
             }
+            bw.flush();
+            bw.close();
+            fw.close();
         
         } catch (Exception e) {
         }
         
         
     }//GEN-LAST:event_jToggleButton4MouseClicked
+
+    private void jToggleButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton6MouseClicked
+        JFileChooser chooser= new JFileChooser();
+        FileNameExtensionFilter filtro= new FileNameExtensionFilter("Archivos de texto", "txt");
+        chooser.setFileFilter(filtro);
+       int select=chooser.showOpenDialog(this);
+        if (select==JFileChooser.APPROVE_OPTION) {
+            File archivo2= chooser.getSelectedFile();
+            String codigo="";
+            try {
+                Scanner leedor= new Scanner(archivo2);
+                while (leedor.hasNext()) {                    
+                    codigo+=leedor.next();
+                }
+                DefaultTreeModel modeloarbol= (DefaultTreeModel)arbolitosexy.getModel();
+                DefaultMutableTreeNode raiz= (DefaultMutableTreeNode)modeloarbol.getRoot();
+                String[]  splitter= codigo.split("]");
+            
+                
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_jToggleButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -660,6 +731,7 @@ public class Pantalla extends javax.swing.JFrame {
     ArrayList<Vehiculo> vehiculos = new ArrayList();
     ArrayList<Cliente> clientes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTree arbolitosexy;
     private javax.swing.JComboBox<String> cb_comprador;
     private javax.swing.JComboBox<String> cb_vehiculo;
     private javax.swing.JComboBox<String> cb_vendedor;
@@ -683,11 +755,14 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JTabbedPane menu;
     private javax.swing.JTextField txt_año;
     private javax.swing.JTextField txt_color;
